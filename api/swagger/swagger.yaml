@@ -18,6 +18,30 @@ consumes:
 produces:
   - application/json
 paths:
+  /api/v1/role:
+    get:
+      x-swagger-router-controller: role
+      summary: CORS support
+      description: Returns 'Role permissions.' to the caller
+      operationId: role
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/ArrayOfPremissions"
+        "403":
+          description: CORS not from 99.100:3002
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+              message:
+                type: string
+            example:
+              code: 403
+              message: Access forbidden.
+            
   /hello:
     # binds a127 app logic to a route
     x-swagger-router-controller: hello_world
@@ -46,6 +70,22 @@ paths:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
 definitions:
+  ArrayOfPremissions:
+    type: array
+    items:
+      $ref: '#/definitions/Permission'
+    example:
+      application/json: [{ "id": 1, "name": "Admin" }]
+  Permission:
+    type: object
+    properties:
+      id: 
+        type: integer
+      name:
+        type: string
+    example:
+      id: 1
+      name: "Admin"
   HelloWorldResponse:
     required:
       - message
