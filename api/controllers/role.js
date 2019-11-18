@@ -8,11 +8,11 @@ module.exports = {
 /* impl of /api/v1/role*/
 function role(req, res) {
 	
-	res.header("Access-Control-Allow-Origin", "http://192.168.99.100:3002");
+	res.header("Access-Control-Allow-Origin", "http://localhost:3002");
 	var role;
 	if(
 		req.headers &&
-		req.headers.origin=="http://192.168.99.100:3002"
+		req.headers.origin=="http://localhost:3002"
 	){
 		role = fetch_data(true);
 		res.json(role);

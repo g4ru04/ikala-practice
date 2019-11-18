@@ -12,9 +12,20 @@
 #https://riptutorial.com/zh-TW/swagger/example/19089/introduction---installation---setup--developing-in-node-js-
 npm install -g swagger
 swagger project create ikala-practice
+swagger project start
 
 #http://localhost:10010
 #swagger project edit
 
 ```
-
+# express-client
+```
+express ikala-practice/express-client-3002 --view=ejs
+```
+# docker
+```
+docker build -t g4ru04/ikala-practice . --no-cache
+docker login
+docker push g4ru04/ikala-practice
+docker run -p 3000:3000 -p 3002:3002 g4ru04/ikala-practice 
+```

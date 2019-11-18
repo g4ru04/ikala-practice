@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script>
+		
+	</script>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+	<div id='data'>
+	</div>
+	<script>
+		$(function(){
+			$.ajax({
+				type : "GET",
+				url : "http://192.168.99.100:3000/api/v1/role",
+				cache : false,
+				success: function(data) {
+					console.log(data);
+					$("#data").html(
+						"<table>"
+						+ data.map(function(item){
+								return "<tr><td>"+item.id+"</td><td>"+item.name+"</td></tr>";
+							}).join("")
+						+ "</table>")
+				}
+			});
+		});
+	</script>
+  </body>
+</html>
