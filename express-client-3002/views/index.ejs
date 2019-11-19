@@ -11,13 +11,15 @@
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+	<div>url: <a href='https://ikala-practice.herokuapp.com/api/v1/role' target='_blank'>https://ikala-practice.herokuapp.com/api/v1/role</a>
+	</div>
 	<div id='data'>
 	</div>
 	<script>
 		$(function(){
 			$.ajax({
 				type : "GET",
-				url : "http://192.168.99.100:3000/api/v1/role",
+				url : "https://ikala-practice.herokuapp.com/api/v1/role",
 				cache : false,
 				success: function(data) {
 					console.log(data);
